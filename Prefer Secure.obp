@@ -1,0 +1,21 @@
+exports.onMessageReceived = (function Version(bot, doc, user, userID, channelID, message, event) {
+    if (doc.prefersecure) {
+        var requesturl = "https://www.example.org";
+    } else {
+        var requesturl = "http://www.example.org";
+    }
+    if(message === undefined){
+        return;
+    }
+    if (message === doc.prefix + "prefersecure") {
+        bot.sendMessage({
+            to: doc.logchannel,
+            message: user + " did the Prefer Secure test, and the URL preferred was `" + requesturl + "`."
+        });
+        bot.sendMessage({
+            to: channelID,
+            message: "The preferred URL is `" + requesturl + "`."
+        });
+
+    }
+});
